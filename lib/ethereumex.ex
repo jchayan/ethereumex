@@ -10,7 +10,7 @@ defmodule Ethereumex do
   def start(_type, _args) do
     :ok = Counter.setup()
     children = Config.setup_children()
-    opts = [strategy: :one_for_one, name: Ethereumex.Supervisor]
+    opts = [strategy: :one_for_one, name: Ethereumex.Supervisor, max_seconds: 20]
     Supervisor.start_link(children, opts)
   end
 end
